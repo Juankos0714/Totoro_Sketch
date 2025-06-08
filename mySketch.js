@@ -6,6 +6,8 @@ const colorTotoroPanza = '#f6f3e7';
 const colorHoja = '#588157';
 const colorNegroIntenso = '#212529';
 const colorBlancoOjos = '#ffffff';
+const colorNariz = '#2d3436';
+const colorSombra = '#636e72';
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
@@ -26,128 +28,195 @@ function draw() {
   noStroke();
   fill(colorHierba);
   ellipse(width / 2, height * 1.2, width * 1.5, height);
+  
+  stroke(color(colorHoja));
+  strokeWeight(2);
+  for (let i = 0; i < width; i += 50) {
+    let grassHeight = random(20, 40);
+    line(i, height - grassHeight, i, height);
+    line(i + 10, height - grassHeight * 0.8, i + 10, height);
+    line(i + 25, height - grassHeight * 0.6, i + 25, height);
+  }
 
   let cx = width / 2;
   let cy = height / 2 + 40;
 
-  strokeWeight(2);
+  noStroke();
+  fill(color(colorSombra + '40'));
+  ellipse(cx + 10, cy + 270, 280, 60);
+
+  strokeWeight(3);
   stroke(colorNegroIntenso);
   fill(colorTotoroCuerpo);
-
 
   beginShape();
   curveVertex(cx, cy + 250); 
   curveVertex(cx, cy + 250); 
-  curveVertex(cx - 150, cy + 180);
-  curveVertex(cx - 150, cy); 
-  curveVertex(cx - 80, cy - 150);
-  curveVertex(cx - 70, cy - 180);
-  curveVertex(cx - 40, cy - 190);
-  curveVertex(cx - 30, cy - 150);
-  curveVertex(cx, cy - 160);
-  curveVertex(cx + 30, cy - 150);
-  curveVertex(cx + 40, cy - 190);
-  curveVertex(cx + 70, cy - 180);
-  curveVertex(cx + 80, cy - 150);
-  curveVertex(cx + 150, cy);
-  curveVertex(cx + 150, cy + 180);
+  curveVertex(cx - 140, cy + 200);
+  curveVertex(cx - 160, cy + 50);
+  curveVertex(cx - 150, cy - 50); 
+  curveVertex(cx - 90, cy - 140);
+  curveVertex(cx - 75, cy - 170);
+  curveVertex(cx - 45, cy - 185);
+  curveVertex(cx - 35, cy - 160);
+  curveVertex(cx, cy - 165);
+  curveVertex(cx + 35, cy - 160);
+  curveVertex(cx + 45, cy - 185);
+  curveVertex(cx + 75, cy - 170);
+  curveVertex(cx + 90, cy - 140);
+  curveVertex(cx + 150, cy - 50);
+  curveVertex(cx + 160, cy + 50);
+  curveVertex(cx + 140, cy + 200);
   curveVertex(cx, cy + 250); 
   curveVertex(cx, cy + 250); 
   endShape(CLOSE);
   
   beginShape();
-  curveVertex(cx - 100, cy + 150);
-  curveVertex(cx - 100, cy + 150);
-  curveVertex(cx - 160, cy + 100);
-  curveVertex(cx - 130, cy - 20);
-  curveVertex(cx - 80, cy - 10);
-  curveVertex(cx - 100, cy + 150);
-  curveVertex(cx - 100, cy + 150);
+  curveVertex(cx - 110, cy + 160);
+  curveVertex(cx - 110, cy + 160);
+  curveVertex(cx - 170, cy + 120);
+  curveVertex(cx - 180, cy + 60);
+  curveVertex(cx - 160, cy + 10);
+  curveVertex(cx - 130, cy - 30);
+  curveVertex(cx - 85, cy - 20);
+  curveVertex(cx - 110, cy + 160);
+  curveVertex(cx - 110, cy + 160);
   endShape();
+  
   beginShape();
-  curveVertex(cx + 100, cy + 150);
-  curveVertex(cx + 100, cy + 150);
-  curveVertex(cx + 160, cy + 100);
-  curveVertex(cx + 130, cy - 20);
-  curveVertex(cx + 80, cy - 10);
-  curveVertex(cx + 100, cy + 150);
-  curveVertex(cx + 100, cy + 150);
+  curveVertex(cx + 110, cy + 160);
+  curveVertex(cx + 110, cy + 160);
+  curveVertex(cx + 170, cy + 120);
+  curveVertex(cx + 180, cy + 60);
+  curveVertex(cx + 160, cy + 10);
+  curveVertex(cx + 130, cy - 30);
+  curveVertex(cx + 85, cy - 20);
+  curveVertex(cx + 110, cy + 160);
+  curveVertex(cx + 110, cy + 160);
   endShape();
-
 
   noStroke();
   fill(colorTotoroPanza);
-  ellipse(cx, cy + 50, 200, 220);
+  ellipse(cx, cy + 60, 220, 240);
 
   fill(colorTotoroCuerpo);
-  let chevronY = cy - 5;
-  triangle(cx - 35, chevronY, cx - 25, chevronY, cx - 30, chevronY - 10);
-  triangle(cx - 15, chevronY, cx - 5, chevronY, cx - 10, chevronY - 10);
-  triangle(cx + 5, chevronY, cx + 15, chevronY, cx + 10, chevronY - 10);
-  triangle(cx + 25, chevronY, cx + 35, chevronY, cx + 30, chevronY - 10);
+  let chevronY = cy - 10;
+  
+  for (let i = -2; i <= 2; i++) {
+    let xPos = cx + i * 20;
+    triangle(xPos - 8, chevronY, xPos + 8, chevronY, xPos, chevronY - 12);
+  }
+  
+  chevronY += 25;
+  for (let i = -1; i <= 1; i++) {
+    let xPos = cx + i * 20;
+    triangle(xPos - 7, chevronY, xPos + 7, chevronY, xPos, chevronY - 10);
+  }
   
   chevronY += 20;
-  triangle(cx - 25, chevronY, cx - 15, chevronY, cx - 20, chevronY - 10);
-  triangle(cx - 5, chevronY, cx + 5, chevronY, cx, chevronY - 10);
-  triangle(cx + 15, chevronY, cx + 25, chevronY, cx + 20, chevronY - 10);
+  triangle(cx - 5, chevronY, cx + 5, chevronY, cx, chevronY - 8);
 
   fill(colorBlancoOjos);
   stroke(colorNegroIntenso);
-  strokeWeight(1.5);
-  ellipse(cx - 35, cy - 70, 35, 35);
-  ellipse(cx + 35, cy - 70, 35, 35);
+  strokeWeight(2);
+  ellipse(cx - 40, cy - 75, 45, 40);
+  ellipse(cx + 40, cy - 75, 45, 40);
 
   fill(colorNegroIntenso);
   noStroke();
-  ellipse(cx - 32, cy - 68, 12, 12);
-  ellipse(cx + 38, cy - 68, 12, 12);
+  ellipse(cx - 35, cy - 72, 16, 16);
+  ellipse(cx + 45, cy - 72, 16, 16);
+  
+  fill(colorBlancoOjos);
+  ellipse(cx - 32, cy - 75, 4, 4);
+  ellipse(cx + 48, cy - 75, 4, 4);
 
+  fill(colorNariz);
+  noStroke();
+  ellipse(cx, cy - 45, 8, 6);
+  
   stroke(colorNegroIntenso);
   strokeWeight(2);
-  line(cx - 10, cy - 50, cx + 10, cy - 50);
+  noFill();
+  arc(cx, cy - 35, 15, 8, 0, PI);
 
-  strokeWeight(1.5);
-  line(cx - 110, cy - 30, cx - 60, cy - 35);
-  line(cx - 110, cy - 20, cx - 60, cy - 20);
-  line(cx - 110, cy - 10, cx - 60, cy - 5);
-  line(cx + 110, cy - 30, cx + 60, cy - 35);
-  line(cx + 110, cy - 20, cx + 60, cy - 20);
-  line(cx + 110, cy - 10, cx + 60, cy - 5);
+  strokeWeight(2);
+  line(cx - 120, cy - 35, cx - 65, cy - 40);
+  line(cx - 118, cy - 25, cx - 65, cy - 25);
+  line(cx - 115, cy - 15, cx - 65, cy - 10);
+  line(cx + 120, cy - 35, cx + 65, cy - 40);
+  line(cx + 118, cy - 25, cx + 65, cy - 25);
+  line(cx + 115, cy - 15, cx + 65, cy - 10);
 
+  strokeWeight(3);
+  line(cx - 155, cy + 75, cx - 145, cy + 88);
+  line(cx - 145, cy + 80, cx - 135, cy + 93);
+  line(cx - 135, cy + 85, cx - 125, cy + 98);
+  line(cx + 155, cy + 75, cx + 145, cy + 88);
+  line(cx + 145, cy + 80, cx + 135, cy + 93);
+  line(cx + 135, cy + 85, cx + 125, cy + 98);
+
+  fill(colorTotoroCuerpo);
   stroke(colorNegroIntenso);
-  strokeWeight(2.5);
-  line(cx - 148, cy + 65, cx - 142, cy + 75);
-  line(cx - 138, cy + 70, cx - 132, cy + 80);
-  line(cx + 148, cy + 65, cx + 142, cy + 75);
-  line(cx + 138, cy + 70, cx + 132, cy + 80);
-
+  strokeWeight(3);
+  
+  beginShape();
+  curveVertex(cx - 50, cy - 150);
+  curveVertex(cx - 50, cy - 150);
+  curveVertex(cx - 30, cy - 190);
+  curveVertex(cx - 15, cy - 200);
+  curveVertex(cx - 5, cy - 195);
+  curveVertex(cx - 10, cy - 180);
+  curveVertex(cx - 25, cy - 160);
+  curveVertex(cx - 50, cy - 150);
+  curveVertex(cx - 50, cy - 150);
+  endShape();
+  
+  beginShape();
+  curveVertex(cx + 50, cy - 150);
+  curveVertex(cx + 50, cy - 150);
+  curveVertex(cx + 30, cy - 190);
+  curveVertex(cx + 15, cy - 200);
+  curveVertex(cx + 5, cy - 195);
+  curveVertex(cx + 10, cy - 180);
+  curveVertex(cx + 25, cy - 160);
+  curveVertex(cx + 50, cy - 150);
+  curveVertex(cx + 50, cy - 150);
+  endShape();
 
   fill(colorHoja);
   stroke(colorNegroIntenso);
   strokeWeight(2);
   beginShape();
-  curveVertex(cx, cy - 150);
-  curveVertex(cx, cy - 150);
-  curveVertex(cx + 40, cy - 180);
-  curveVertex(cx + 10, cy - 220);
-  curveVertex(cx - 15, cy - 180);
-  curveVertex(cx, cy - 150);
-  curveVertex(cx, cy - 150);
+  curveVertex(cx + 5, cy - 160);
+  curveVertex(cx + 5, cy - 160);
+  curveVertex(cx + 35, cy - 185);
+  curveVertex(cx + 45, cy - 205);
+  curveVertex(cx + 25, cy - 220);
+  curveVertex(cx + 5, cy - 210);
+  curveVertex(cx - 5, cy - 190);
+  curveVertex(cx + 5, cy - 160);
+  curveVertex(cx + 5, cy - 160);
   endShape();
+  
+  stroke(color(colorHoja).levels.map(x => x * 0.7));
+  strokeWeight(1);
+  line(cx + 15, cy - 180, cx + 20, cy - 200);
 
-  dibujarSusuwatari(width * 0.2, height * 0.6);
-  dibujarSusuwatari(width * 0.85, height * 0.4);
+  dibujarSusuwatari(width * 0.15, height * 0.65, frameCount * 0.01);
+  dibujarSusuwatari(width * 0.88, height * 0.35, frameCount * 0.008);
+  dibujarSusuwatari(width * 0.12, height * 0.25, frameCount * 0.012);
 }
 
-function dibujarSusuwatari(x, y) {
+function dibujarSusuwatari(x, y, tiempo = 0) {
   push(); 
   translate(x, y); 
 
   stroke(colorNegroIntenso);
   strokeWeight(1.5);
-  for (let i = 0; i < 50; i++) {
-    let angulo = random(TWO_PI);
-    let longitud = random(20, 35);
+  for (let i = 0; i < 60; i++) {
+    let angulo = (i / 60) * TWO_PI + sin(tiempo + i * 0.1) * 0.3;
+    let longitud = 25 + sin(tiempo * 2 + i * 0.2) * 8;
     let finX = cos(angulo) * longitud;
     let finY = sin(angulo) * longitud;
     line(0, 0, finX, finY);
@@ -155,15 +224,19 @@ function dibujarSusuwatari(x, y) {
 
   noStroke();
   fill(colorNegroIntenso);
-  ellipse(0, 0, 45, 45);
+  ellipse(0, 0, 50, 50);
 
   fill(colorBlancoOjos);
-  ellipse(-8, 2, 18, 18);
-  ellipse(10, 2, 18, 18);
+  ellipse(-10 + sin(tiempo) * 2, 2, 20, 20);
+  ellipse(12 + sin(tiempo) * 2, 2, 20, 20);
 
   fill(colorNegroIntenso);
-  ellipse(-6, 3, 6, 6);
-  ellipse(12, 3, 6, 6);
+  ellipse(-8 + sin(tiempo) * 2, 4, 8, 8);
+  ellipse(14 + sin(tiempo) * 2, 4, 8, 8);
+  
+  fill(colorBlancoOjos);
+  ellipse(-6 + sin(tiempo) * 2, 2, 2, 2);
+  ellipse(16 + sin(tiempo) * 2, 2, 2, 2);
   
   pop(); 
 }
